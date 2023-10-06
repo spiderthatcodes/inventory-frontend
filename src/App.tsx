@@ -3,14 +3,17 @@ import { FC, useEffect, useState } from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
 import BookModal from './components/BookModal/BookModal';
+import NoAuth from './pages/NoAuth';
+import Books from './pages/Books';
 
 const App: FC = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [searchResult, setSearchResult] = useState<[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [bookToShow, setBookToShow] = useState();
+    const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
-    console.log(showModal)
+
 
     useEffect(() => {
         // this is going to pull in the existing lists eventually
@@ -25,6 +28,8 @@ const App: FC = () => {
                 setSearchQuery={setSearchQuery}
                 setShowModal={setShowModal}
             />
+
+            {loggedIn ? <Books /> :<NoAuth setLoggedIn={setLoggedIn} />}
 
             {showModal && (
                 <BookModal
