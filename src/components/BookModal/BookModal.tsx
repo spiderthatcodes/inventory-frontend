@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import axios from 'axios'
 import { FC } from 'react';
+import { BookCard, ModalContainer } from './style';
 
 const BookModal: FC<{
     book?: any;
@@ -13,24 +14,24 @@ const BookModal: FC<{
     // }
 
     return (
-        <>
+        <ModalContainer>
             {book ? (
                 <div>
                     <h1>{book.title}</h1>
                 </div>
             ) : (
-                <div>
+                <>
                     {searchResult.length > 0 && (
-                        <div>
+                        <>
                             {searchResult
                                 .filter(
                                     (book: any) =>
                                         book.volumeInfo.imageLinks?.thumbnail !=
                                         undefined
                                 )
-                                .map((book: any) =>
-                                    <>
-                                        <h1
+                                .map((book: any, index: number) =>
+                                    <BookCard key={index}>
+                                        <h1 id='title'
                                             onClick={() => {
                                                 setBookToShow(book.volumeInfo);
                                                 setShowModal(true);
@@ -45,13 +46,14 @@ const BookModal: FC<{
                                             }
                                             alt='book'
                                         />
-                                    </>
+                                        <div id='details'></div>
+                                    </BookCard>
                                 )}
-                        </div>
+                        </>
                     )}
-                </div>
+                </>
             )}
-        </>
+        </ModalContainer>
     );
 };
 
