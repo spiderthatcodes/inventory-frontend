@@ -25,6 +25,7 @@ const Nav: FC<{
 
     return (
         <div>
+          <h1>Inventory Project</h1>
             <input
                 type='text'
                 value={searchQuery}
