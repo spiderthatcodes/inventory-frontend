@@ -8,13 +8,19 @@ const Books: FC = () => {
     useEffect(() => {
         axios
             .get('http://localhost:8000/api/books/')
-            .then(({ data }) => setUsersBooks(data))
+            .then(({ data }) => setUsersBooks(data.books))
             .catch((err) => console.log(err));
     }, []);
 
-    console.log(usersBooks)
-
-    return <></>;
+    return (
+      <div>
+        {usersBooks.map((book: any) => <div>
+          <h1>{book.title}</h1>
+          <h2>By: {book.author}</h2>
+          <img src={book.cover_image} alt={book.title} />
+        </div>)}
+      </div>
+    )
 };
 
 export default Books;
