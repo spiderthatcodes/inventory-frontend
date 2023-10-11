@@ -26,7 +26,7 @@ const App: FC = () => {
                 setShowModal={setShowModal}
             />
 
-            <Books />
+            <Books showModal={showModal} />
 
             {/* {loggedIn ? <Books /> : <NoAuth setLoggedIn={setLoggedIn} />} */}
 

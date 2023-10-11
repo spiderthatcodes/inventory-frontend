@@ -8,6 +8,8 @@ export const ModalContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 1%;
+    position: fixed;
+    top: 5%;
 `;
 
 export const BookCard = styled.div`

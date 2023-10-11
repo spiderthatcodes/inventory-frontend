@@ -22,7 +22,7 @@ const BookModal: FC<{
         };
         axios
             .post('http://localhost:8000/api/books/', bookToAdd)
-            .then(({ data }) => console.log(data))
+            .then(() => setShowModal(false))
             .catch((err) => console.log(err));
     };
 
